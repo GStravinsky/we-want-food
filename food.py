@@ -7,11 +7,11 @@ import grocery_list
 def run(args):
     meals = retrieval.give_meals(args.file, args.meals)
     for meal in meals:
-        print(meal)
+        print(f"{meal.index}: {meal.name}")
         if args.ingredients:
-            ingredients = retrieval.give_ingredients(args.file, meal)
-            for ingredient, quantity in ingredients.items():
+            for ingredient, quantity in meal.groceries.items():
                 print("\t--{}: {}".format(ingredient, quantity))
+
 
 def run_grocery_list(gl):
     grocery_dict = grocery_list.merge_produce_lists(gl)
@@ -32,7 +32,7 @@ if __name__ == "__main__":
                         help="The number of meals to generate")
     parser.add_argument("-i", "--interactive", default=False, type=bool,
                         metavar="I", help="Should prompt be interactive")
-    parser.add_argument("-f", "--file", type=str, default="meals.json",
+    parser.add_argument("-f", "--file", type=str, default="test.json",
                         help="Path to the meals file")
     parser.add_argument("-g", "--ingredients", action="store_true",
                         help="Show ingredients")
