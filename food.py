@@ -14,7 +14,7 @@ def run(args):
 
 
 def run_grocery_list(gl):
-    grocery_dict = grocery_list.merge_produce_lists(gl)
+    grocery_dict = grocery_list.merge_produce_lists(args.file, gl)
     for ingredient, quantity in grocery_dict.items():
         print("\t--{}: {}".format(ingredient, quantity)) 
 
