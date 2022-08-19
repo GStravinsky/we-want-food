@@ -3,9 +3,7 @@ import random
 from domain import Recipe
 
 
-def give_meals(data_json, n) -> list[Recipe]:
-    with open(data_json) as f:
-        data = json.load(f)
+def give_meals(data, n) -> list[Recipe]:
 
     meal_indices = random.sample(list(data.keys()), k=n)
 

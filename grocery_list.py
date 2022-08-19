@@ -3,9 +3,7 @@ import json
 from domain import Recipe
 
 ## TODO: could be in a class with all rolled recipes cached
-def merge_produce_lists(data_json, meal_indices: list[str]) -> dict :
-    with open(data_json) as f:
-        data = json.load(f)
+def merge_produce_lists(data, meal_indices: list[str]) -> dict :
 
     recipes = [Recipe(i, data[i]["name"], data[i]["groceries"]) for i in meal_indices]
 

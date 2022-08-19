@@ -2,10 +2,11 @@ import argparse
 import sys
 import retrieval
 import grocery_list
-
+import json
 
 def run(args):
-    meals = retrieval.give_meals(args.file, args.meals)
+    
+    meals = retrieval.give_meals(data, args.meals)
     for meal in meals:
         print(f"{meal.index}: {meal.name}")
         if args.ingredients:
@@ -14,7 +15,8 @@ def run(args):
 
 
 def run_grocery_list(gl):
-    grocery_dict = grocery_list.merge_produce_lists(args.file, gl)
+
+    grocery_dict = grocery_list.merge_produce_lists(data, gl)
     for ingredient, quantity in grocery_dict.items():
         print("\t--{}: {}".format(ingredient, quantity)) 
 
@@ -41,6 +43,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     validate(args)
+
+    with open(args.file) as f:
+        data = json.load(f)
 
     if args.grocerylist:
         run_grocery_list(args.grocerylist)
