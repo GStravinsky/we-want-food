@@ -15,11 +15,11 @@ def run(args):
                 print("\t--{}: {}".format(ingredient, quantity))
 
 
-def run_grocery_list(gl):
-    
-    groceries = grocery_list.produce_grocery_list(DATA, gl)
-    telegram_bot.send_grocery_list(groceries)
-    print(groceries) 
+def run_grocery_list(indices):
+    grocery_object = grocery_list.GroceryList(DATA, indices)
+    groceries_parsed = grocery_object.get()
+    telegram_bot.send_grocery_list(groceries_parsed)
+    print(groceries_parsed) 
 
 
 def validate(args):
