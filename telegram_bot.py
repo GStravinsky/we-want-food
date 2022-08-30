@@ -1,8 +1,5 @@
 import telegram
-
-TOKEN = "1404105180:AAEy2gTOA5T8xGhW83gkKO229ZNUqow1m10"
-CHAT_ID = 644126558
-GROUP_CHAT_ID = -750162787
+from constants import TOKEN, GROUP_CHAT_ID, CHAT_ID
 
 def send_grocery_list(groceries):
     bot = telegram.Bot(TOKEN)
