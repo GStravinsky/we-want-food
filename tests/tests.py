@@ -24,6 +24,7 @@ class Test(unittest.TestCase):
         names = [r.name for r in answer]
         groceries = [r.groceries for r in answer]
 
+        # TODO: unstable test. Order is list is stochastic
         self.assertSequenceEqual(indices, ["1", "2"])
         self.assertSequenceEqual(names, ["Test1", "Test2"])
         self.assertSequenceEqual(groceries, [{"bread": "1", "salmon": "100g"}, {"bread": "2", "salmon": "200g"}])

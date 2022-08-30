@@ -1,8 +1,12 @@
 from collections import defaultdict
-import json
 from domain import Recipe
 
-## TODO: could be in a class with all rolled recipes cached
+
+def produce_grocery_list(data, meal_indices: list[str]) -> str:
+
+    grocery_dict = merge_produce_lists(data, meal_indices)
+    return parse_grocery_list(grocery_dict)
+
 def merge_produce_lists(data, meal_indices: list[str]) -> dict :
 
     recipes = [Recipe(i, data[i]["name"], data[i]["groceries"]) for i in meal_indices]
@@ -19,4 +23,10 @@ def merge_produce_lists(data, meal_indices: list[str]) -> dict :
 
 
     return grocery_list
+
+def parse_grocery_list(grocery_dict: dict) -> str:
+    parsed_groceries = ""
+    for ingredient, quantity in grocery_dict.items():
+        parsed_groceries = parsed_groceries + "\n" + "--{}: {}".format(ingredient, quantity)
+    return parsed_groceries
 
